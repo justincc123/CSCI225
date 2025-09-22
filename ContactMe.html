@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact Me - Assignment 2</title>
+</head>
+
+<body>
+    <!-- Assignment 2 Page -->
+    <h1>Assignment 2: Contact Me</h1>
+
+    <!-- Embedded Video Section -->
+    <div class="video-section">
+        <h2>About Me Video</h2>
+        <!-- Example with YouTube embed -->
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/7MghhloFQ7U?si=5vvfYI8xj3q7Q7bc&amp;start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+       
+
+        <!-- If you have your own video file, you could use this instead:
+        <video src="video/myvideo.mp4" controls poster="img/cover.jpg">
+            Your browser does not support the video tag.
+        </video>
+        -->
+    </div>
+
+    <!-- Feedback Form -->
+    <div class="form-section">
+        <h2>Feedback Form</h2>
+        <form name="feedback" action="">
+            <p>First Name:
+                <input type="text" name="fname" placeholder="anonymous" required>
+            </p>
+            <p>Last Name:
+                <input type="text" name="lname" placeholder="anonymous" required>
+            </p>
+            <p>Email:
+                <input type="email" name="mail" placeholder="name@domain.com" required>
+            </p>
+
+            <p>Would you recommend this website?
+                <label><input type="radio" name="recommend" value="yes"> Yes</label>
+                <label><input type="radio" name="recommend" value="no"> No</label>
+            </p>
+
+            <p>Favorite Website:
+                <select name="favorite">
+                    <option value="google">Google</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="twitter">Twitter</option>
+                    <option value="time">Time</option>
+                </select>
+            </p>
+
+            <p>Rate this website (1–10):
+                <input type="range" name="rating" min="1" max="10">
+            </p>
+
+            <p>Additional Comments:
+                <textarea name="comment" rows="4" cols="40"></textarea>
+            </p>
+
+            <!-- Extra HTML5 Features -->
+            <p>Phone Number:
+                <input type="tel" name="phone" placeholder="123-456-7890">
+            </p>
+            <p>Website URL:
+                <input type="url" name="website" placeholder="https://example.com">
+            </p>
+            <p>Date of Visit:
+                <input type="date" name="visitdate">
+            </p>
+
+            <p>
+                <input type="submit" value="Submit Feedback">
+            </p>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy;2025. Justin Coleman. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
