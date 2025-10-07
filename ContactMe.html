@@ -3,72 +3,129 @@
 
 <head>
     <title>Contact Me - Assignment 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1>Assignment 2 Contact Me Page</h1>
 
-    <div class="video">
-        <h2>Video about my car/hobby</h2>
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/kNF0Fr_b7IY?si=TU4Q4PU4IHiJPmld" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <div class="container-xxl">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg bg-light">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.usca.edu/">USCA Webpage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#assignments">Assignments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#Contact">Contact Information</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#Schedule">Course Schedule</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/justincc123/CSCI225">CSCI225 GitHub</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col">
+                <div class="video">
+                    <h2>Video about my car/hobby</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/kNF0Fr_b7IY?si=TU4Q4PU4IHiJPmld"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+
+            <div class="col">
+                <div class="feedback">
+
+                    <form action="#" name="Feedback">
+                        <div class="form-floating">
+                            <p>User's first name:
+                                <input type="text" class="form-control" id="fN" name="fname" placeholder="anonymous"
+                                    required>
+                                <label for="fN"></label>
+                            </p>
+                        </div>
+                        <div class="form-floating">
+                            <p>User's last name:
+                                <input type="text" class="form-control" id="lN" name="lname" placeholder="anonymous"
+                                    required>
+                                <label for="lN"></label>
+                            </p>
+                        </div>
+                        <div class="form-floating">
+                            <p>User's email:
+                                <input type="email" class="form-control" id="eM" name="mail"
+                                    placeholder="name@domain.com" required>
+                                <label for="eM"></label>
+                            </p>
+                        </div>
+
+                        <p>Would you recommend my website?
+                            <label><input type="radio" name="recommend" value="yes"> Yes</label>
+                            <label><input type="radio" name="recommend" value="no"> No</label>
+                        </p>
+
+                        <p>What is your favorite website?:
+                            <select name="website">
+                                <option value="google">Google</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="twitter">Twitter</option>
+                                <option value="time">Time</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </p>
+
+                        <p>Please rate the website out of 10:
+                            <input type="range" name="rating" min="1" max="10">
+                        </p>
+
+                        <p>Any additional comments?
+                            <textarea name="comment" rows="20" cols="40"></textarea>
+                        </p>
+                        <p>Please enter your phone number:
+                            <input type="tel" name="phone" placeholder="123-555-1234"
+                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                        </p>
+                        <p>When did you visit the website?
+                            <input type="date" name="visit" required>
+                        </p>
+                        <p>What time did you visit the website?
+                            <label for="time">Pick a time:</label>
+                            <input type="time" id="time" name="time">
+
+                        </p>
+
+                        <p>
+                            <input type="submit" value="Submit">
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy;2025. Justin Coleman. All Rights Reserved.</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+
     </div>
-
-    <div class="feedback">
-        <h2>Feedback</h2>
-        <form action="#" name="Feedback">
-            <p>User's first name:
-                <input type="text" name="fname" placeholder="anonymous" required>
-            </p>
-            <p>User's last name:
-                <input type="text" name="lname" placeholder="anonymous" required>
-            </p>
-            <p>User's email:
-                <input type="email" name="mail" placeholder="name@domain.com" required>
-            </p>
-
-            <p>Would you recommend my website?
-                <label><input type="radio" name="recommend" value="yes"> Yes</label>
-                <label><input type="radio" name="recommend" value="no"> No</label>
-            </p>
-
-            <p>What is your favorite website?:
-                <select name="website">
-                    <option value="google">Google</option>
-                    <option value="facebook">Facebook</option>
-                    <option value="twitter">Twitter</option>
-                    <option value="time">Time</option>
-                    <option value="other">Other</option>
-                </select>
-            </p>
-
-            <p>Please rate the website out of 10:
-                <input type="range" name="rating" min="1" max="10">
-            </p>
-
-            <p>Any additional comments?
-                <textarea name="comment" rows="20" cols="40"></textarea>
-            </p>
-            <p>Please enter your phone number:
-                <input type="tel" name="phone" placeholder="123-555-1234" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-            </p>
-            <p>When did you visit the website?
-                <input type="date" name="visit" required>
-            </p>
-            <p>What time did you visit the website?
-                <label for="time">Pick a time:</label>
-                <input type="time" id="time" name="time">
-
-            </p>
-
-            <p>
-                <input type="submit" value="Submit">
-            </p>
-        </form>
-    </div>
-
-    <footer>
-        <p>&copy;2025. Justin Coleman. All Rights Reserved.</p>
-    </footer>
 </body>
 
 </html>
