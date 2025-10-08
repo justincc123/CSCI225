@@ -5,6 +5,27 @@
     <title>Contact Me - Assignment 2</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style type="text/css">
+        .container-xxl {
+            background-color: rgb(28, 150, 190);
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: rgb(3, 214, 247);
+            color: rgb(11, 178, 33);
+        }
+
+        iframe {
+            margin-left: 20px;
+            border-top: 8px solid rgb(230, 14, 14);
+            border-bottom: 8px solid rgb(230, 14, 14);
+            border-left: 8px solid rgb(230, 14, 14);
+            border-right: 8px solid rgb(230, 14, 14);
+            box-shadow: 8px 8px 10px rgba(160, 246, 0, 0.4);
+
+        }
+    </style>
 </head>
 
 <body>
@@ -75,10 +96,14 @@
                             </p>
                         </div>
 
-                        <p>Would you recommend my website?
-                            <label><input type="radio" name="recommend" value="yes"> Yes</label>
-                            <label><input type="radio" name="recommend" value="no"> No</label>
-                        </p>
+                        <div class="form-check from-check-inline">
+                            <p>Would you recommend my website?
+                                <label class="form-check-label"><input class="form-check-label" type="radio"
+                                        name="recommend" value="yes"> Yes</label>
+                                <label class="form-check-label"><input type="radio" name="recommend" value="no">
+                                    No</label>
+                            </p>
+                        </div>
 
                         <p>What is your favorite website?:
                             <select name="website">
@@ -95,7 +120,7 @@
                         </p>
 
                         <p>Any additional comments?
-                            <textarea name="comment" rows="20" cols="40"></textarea>
+                            <textarea class="form-control" name="comment" rows="20" cols="40"></textarea>
                         </p>
                         <p>Please enter your phone number:
                             <input type="tel" name="phone" placeholder="123-555-1234"
