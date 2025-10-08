@@ -1,18 +1,27 @@
-/* General page styling */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: url('../img/IMG_2472.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background-color: #000;
 }
 
-/* Navbar styling */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 40px;
+    background-image: url('../img/IMG_2472.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: transparent;
+    z-index: -100;
+}
+
 .navbar {
     background-color: #ff9900;
     color: white;
-    padding: 5px; /* reduced from 10px */
+    padding: 1px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -20,7 +29,7 @@ body {
 }
 
 .navbar h1 {
-    font-size: 1.2em; /* smaller */
+    font-size: 1.0em;
 }
 
 .navbar ul {
@@ -32,7 +41,7 @@ body {
 
 .navbar ul li {
     display: inline-block;
-    margin: 0 10px; /* smaller spacing */
+    margin: 0 10px;
 }
 
 .navbar ul li a {
@@ -45,82 +54,79 @@ body {
     text-decoration: underline;
 }
 
-/* Footer fixed at bottom */
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
     background-color: #ff9900;
-    padding: 10px 0;
+    padding: 5px 0;
     font-size: 0.9em;
     color: black;
 }
 
-/* Section wrapper */
 .section-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70%;       /* reduced from 80% */
-    max-width: 800px; /* reduced from 900px */
+    position: static;
+    width: 70%;
+    max-width: 800px;
+    margin: 0 auto;
     z-index: 50;
 }
 
-/* Section headers */
 .section-header {
-    position: fixed; /* h1 elements positioned relative to viewport */
+    position: absolute;
     cursor: pointer;
-    padding: 3px 8px; /* smaller than before */
+    padding: 3px 8px;
     background-color: rgba(255, 255, 255, 0.7);
-    font-size: 1.1em; /* smaller font */
-    z-index: 110; /* ensure headers sit above navbar/footer */
+    font-size: 1.1em;
+    z-index: 110;
 }
 
-/* Position headers */
-/* Position headers at the four corners and one centered */
-/* use slightly larger offsets to space them out from the edges */
-/* Place the section headers (h1) around the page using fixed/absolute positioning */
-/* Top-left */
-#intro-header { top: 20px; left: 20px; }
-/* Top-right */
-#portfolio-header { top: 20px; right: 20px; }
-/* Bottom-left */
-#assignments-header { bottom: 20px; left: 20px; }
-/* Bottom-right */
-#schedule-header { bottom: 20px; right: 20px; }
-/* Center header */
-#contact-header { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+#intro-header { top: 65px; left: 110px; }
+#contact-header { top: 50%; left: 30px; transform: translateY(-50%); }
+#assignments-header { bottom: 53px; left: 100px; }
+#portfolio-header { top: 35%; right: 140px; transform: translateY(-50%); }
+#schedule-header { top: 65%; right: 140px; transform: translateY(-50%); }
 
-
-
-/* Content sections hidden by default */
 .content {
-    /* Absolute centered so all sections overlap in the center of the page */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(255,255,255,0.95);
-    padding: 15px;
-    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
-    max-height: 70vh;
+    background-color: rgba(255,255,255,0.98);
+    padding: 20px 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    border-radius: 8px;
+    max-height: 80vh;
     overflow-y: auto;
-    width: 100%;
-    display: none; /* hidden by default as required */
-    z-index: 60; /* above wrapper but below headers */
+    width: 66%;
+    max-width: 640px;
+    min-width: 320px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.18s ease, visibility 0.18s ease;
+    z-index: 60;
 }
 
-/* Address element should also be absolute and centered as requested */
 .content address {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: static;
+    transform: none;
+    margin: 0;
+    line-height: 1.3;
 }
 
-/* Reveal the corresponding section when its h1 is hovered (CSS only) */
-.section-header:hover + .content {
-    display: block;
+.content img { max-width: 100%; height: auto; display: block; margin: 8px 0; }
+.content ol, .content ul { margin: 0 0 8px 1rem; }
+.content table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.content td, .content th { padding: 6px 8px; }
+.content p { margin: 0 0 8px 0; }
+
+.section-wrapper:hover .content,
+.section-wrapper:focus-within .content,
+.section-header:hover + .content,
+.content:hover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
