@@ -1,0 +1,126 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: url('../img/IMG_2472.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #ff9900;
+    color: white;
+    padding: 5px; /* reduced from 10px */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar h1 {
+    font-size: 1.2em; /* smaller */
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin: 0 10px; /* smaller spacing */
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer fixed at bottom */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #ff9900;
+    padding: 10px 0;
+    font-size: 0.9em;
+    color: black;
+}
+
+/* Section wrapper */
+.section-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;       /* reduced from 80% */
+    max-width: 800px; /* reduced from 900px */
+    z-index: 50;
+}
+
+/* Section headers */
+.section-header {
+    position: fixed; /* h1 elements positioned relative to viewport */
+    cursor: pointer;
+    padding: 3px 8px; /* smaller than before */
+    background-color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1em; /* smaller font */
+    z-index: 110; /* ensure headers sit above navbar/footer */
+}
+
+/* Position headers */
+/* Position headers at the four corners and one centered */
+/* use slightly larger offsets to space them out from the edges */
+/* Place the section headers (h1) around the page using fixed/absolute positioning */
+/* Top-left */
+#intro-header { top: 20px; left: 20px; }
+/* Top-right */
+#portfolio-header { top: 20px; right: 20px; }
+/* Bottom-left */
+#assignments-header { bottom: 20px; left: 20px; }
+/* Bottom-right */
+#schedule-header { bottom: 20px; right: 20px; }
+/* Center header */
+#contact-header { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+
+
+/* Content sections hidden by default */
+.content {
+    /* Absolute centered so all sections overlap in the center of the page */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255,255,255,0.95);
+    padding: 15px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+    max-height: 70vh;
+    overflow-y: auto;
+    width: 100%;
+    display: none; /* hidden by default as required */
+    z-index: 60; /* above wrapper but below headers */
+}
+
+/* Address element should also be absolute and centered as requested */
+.content address {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Reveal the corresponding section when its h1 is hovered (CSS only) */
+.section-header:hover + .content {
+    display: block;
+}
