@@ -11,31 +11,24 @@
             padding: 0;
         }
 
-        .navbar {
-            background-color: rgb(3, 214, 247);
-            color: rgb(11, 178, 33);
-        }
-
         iframe {
             margin-left: 20px;
-            border-top: 8px solid rgb(230, 14, 14);
-            border-bottom: 8px solid rgb(230, 14, 14);
-            border-left: 8px solid rgb(230, 14, 14);
-            border-right: 8px solid rgb(230, 14, 14);
             box-shadow: 8px 8px 10px rgba(160, 246, 0, 0.4);
+        }
 
+        body {
+            padding-top: 70px;
         }
     </style>
 </head>
 
 <body>
 
-
     <div class="container-xxl">
         <div class="row">
             <div class="col">
-                <nav class="navbar navbar-expand-lg bg-light">
-                    <ul class="navbar-nav">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+                    <ul class="navbar-nav fw-bold">
                         <li class="nav-item">
                             <a class="nav-link" href="https://www.usca.edu/">USCA Webpage</a>
                         </li>
@@ -56,57 +49,52 @@
             </div>
         </div>
 
-
-
         <div class="row">
             <div class="col">
                 <div class="video">
                     <h2>Video about my car/hobby</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/kNF0Fr_b7IY?si=TU4Q4PU4IHiJPmld"
-                        title="YouTube video player"
+                    <iframe class="border border-danger rounded" width="560" height="315"
+                        src="https://www.youtube.com/embed/kNF0Fr_b7IY?si=TU4Q4PU4IHiJPmld" title="YouTube video player"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
 
-
             <div class="col">
                 <div class="feedback">
-
                     <form action="#" name="Feedback">
-                        <div class="form-floating">
-                            <p>User's first name:
-                                <input type="text" class="form-control" id="fN" name="fname" placeholder="anonymous"
-                                    required>
-                                <label for="fN"></label>
-                            </p>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="fN" name="fname" placeholder="anonymous"
+                                required>
+                            <label for="fN">User's first name</label>
                         </div>
-                        <div class="form-floating">
-                            <p>User's last name:
-                                <input type="text" class="form-control" id="lN" name="lname" placeholder="anonymous"
-                                    required>
-                                <label for="lN"></label>
-                            </p>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="lN" name="lname" placeholder="anonymous"
+                                required>
+                            <label for="lN">User's last name</label>
                         </div>
-                        <div class="form-floating">
-                            <p>User's email:
+
+                        <div class="mb-3">
+                            <div class="form-floating">
                                 <input type="email" class="form-control" id="eM" name="mail"
                                     placeholder="name@domain.com" required>
-                                <label for="eM"></label>
-                            </p>
+                                <label for="eM">User's email</label>
+                            </div>
+                            <small class="form-text text-muted">Your email will not be shared.</small>
                         </div>
 
-                        <div class="form-check from-check-inline">
-                            <p>Would you recommend my website?
-                                <label class="form-check-label"><input class="form-check-label" type="radio"
-                                        name="recommend" value="yes"> Yes</label>
-                                <label class="form-check-label"><input type="radio" name="recommend" value="no">
-                                    No</label>
-                            </p>
+                        <div class="form-check form-check-inline">
+                            <p>Would you recommend my website?</p>
+                            <input class="form-check-input" type="radio" id="yes" name="recommend" value="yes">
+                            <label class="form-check-label" for="yes">Yes</label>
+
+                            <input class="form-check-input ms-3" type="radio" id="no" name="recommend" value="no">
+                            <label class="form-check-label" for="no">No</label>
                         </div>
 
                         <p>What is your favorite website?:
-                            <select name="website">
+                            <select name="website" class="form-select">
                                 <option value="google">Google</option>
                                 <option value="facebook">Facebook</option>
                                 <option value="twitter">Twitter</option>
@@ -116,7 +104,7 @@
                         </p>
 
                         <p>Please rate the website out of 10:
-                            <input type="range" name="rating" min="1" max="10">
+                            <input type="range" name="rating" min="1" max="10" class="form-range">
                         </p>
 
                         <p>Any additional comments?
@@ -132,11 +120,10 @@
                         <p>What time did you visit the website?
                             <label for="time">Pick a time:</label>
                             <input type="time" id="time" name="time">
-
                         </p>
 
                         <p>
-                            <input type="submit" value="Submit">
+                            <input type="submit" value="Submit" class="btn btn-primary">
                         </p>
                     </form>
                 </div>
