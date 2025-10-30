@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Georgia Power Bill Calculator</title>
+  <link rel="stylesheet" href="css/powerbill.css">
+  <script src="js/powerbill.js" defer></script>
+</head>
+
+<body>
+  <h1>Georgia Power Bill Calculator</h1>
+
+  <div class="UI">
+
+    <div class="left">
+      <p>
+        The utility bill calculator is a resource that the Commission is making * available that allows a consumer to check the accuracy of his/her monthly electric bill. A bill calculator has been prepared for customers of the Georgia Power Company. This bill calculator applies only to residential customers who are receiving service under the standard Residential Tariff (R-27). For more details regarding Georgia Power's residential tariff offerings, please visit Georgia Power Pricing & Rates.
+      </p>
+      <form id="form">
+        <label>Enter your monthly usage in Kilowatt hours:</label>
+        <input type="text" id="usage" placeholder="">
+
+        <label>Enter Number of days for your current billing period:</label>
+        <input type="text" id="days" placeholder="">
+
+        <label>Enter Sales tax(%):</label>
+        <input type="text" id="tax" value="8">
+
+        <label>Is your residence INSIDE the city?</label>
+        <div class="City">
+          <label><input type="radio" name="city" value="Inside" checked> Yes</label>
+          <label><input type="radio" name="city" value="Outside"> No </label>
+        </div>
+
+        <label>Is it a Summer month (June - September)?</label>
+        <div class="month">
+          <label><input type="radio" name="season" value="Summer" checked>Yes</label>
+          <label><input type="radio" name="season" value="Winter">No</label>
+        </div>
+
+        <div class="button">
+          <input type="button" id="calculate" value="Submit">
+          <input type="reset" value="Reset">
+        </div>
+      </form>
+    </div>
+
+    <div class="right">
+      <h2>Details of Your Bill</h2>
+      <table>
+        <thead>
+          <tr><th>Items</th><th>Fees</th></tr>
+        </thead>
+        <tbody id="results">
+          <tr><td colspan="2" style="text-align:center;">No data yet. Please calculate your bill.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!--
+.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Georgia Power Bill Calculator</title>
+  <link rel="stylesheet" href="css/powerbill.css">
+  <script src="js/powerbill.js" defer></script>
+</head>
+
+<body>
+  <h1>Georgia Power Bill Calculator</h1>
+
+  <form id="billForm">
+    <p>
+      <label>Monthly Usage (kWh):</label>
+      <input type="text" id="usage">
+    </p>
+
+    <p>
+      <label>Number of Days:</label>
+      <input type="text" id="days">
+    </p>
+
+    <p>
+      <label>Tax Rate (%):</label>
+      <input type="text" id="tax" value="8">
+    </p>
+
+    <p>
+      <label>City:</label><br>
+      <input type="radio" name="city" value="Inside" checked> Inside City
+      <input type="radio" name="city" value="Outside"> Outside City
+    </p>
+
+    <p>
+      <label>Season:</label><br>
+      <input type="radio" name="season" value="Summer" checked> Summer
+      <input type="radio" name="season" value="Winter"> Winter
+    </p>
+
+    <p>
+      <input type="button" id="calculate" value="Calculate Bill">
+      <input type="reset" value="Clear">
+    </p>
+  </form>
+
+  <div id="results"></div>
+</body>
+</html>
+
+
+
+
+css
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 40px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #0059b3;
+}
+
+form {
+  max-width: 450px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+input[type="button"], input[type="reset"] {
+  margin-right: 10px;
+  padding: 8px 12px;
+  border: none;
+  background-color: #0059b3;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+input[type="button"]:hover, input[type="reset"]:hover {
+  background-color: #003d80;
+}
+
+#results {
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: #e8f0ff;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+
+
+js
+
+// *************************************************
+//   Georgia Power Bill Calculator - Assignment 5
+//   Author: Justin Coleman
+//   Based on Lecture 9 & 10 JavaScript examples
+// *************************************************
+
+// register event handler for calculate button
+document.getElementById("calculate").addEventListener("click", calculateBill, false);
+
+// function to calculate the power bill
+function calculateBill() {
+
+    // get user input
+    var usage = parseFloat(document.getElementById("usage").value);
+    var days = parseFloat(document.getElementById("days").value);
+    var tax = parseFloat(document.getElementById("tax").value);
+    var city = document.querySelector("input[name='city']:checked").value;
+    var season = document.querySelector("input[name='season']:checked").value;
+
+    // validate input
+    if (isNaN(usage) || isNaN(days) || isNaN(tax)) {
+        alert("Please enter valid numbers for usage, days, and tax rate.");
+        return;
+    }
+
+    // base charge
+    var baseCharge = 0.4603 * days;
+
+    // tier calculations
+    var tier1 = 0, tier2 = 0, tier3 = 0;
+
+    if (season === "Summer") {
+        if (usage <= 650)
+            tier1 = usage * 0.066678;
+        else if (usage <= 1000) {
+            tier1 = 650 * 0.066678;
+            tier2 = (usage - 650) * 0.110748;
+        }
+        else {
+            tier1 = 650 * 0.066678;
+            tier2 = 350 * 0.110748;
+            tier3 = (usage - 1000) * 0.114625;
+        }
+    }
+    else { // Winter
+        tier1 = usage * 0.062404;
+    }
+
+    // compute base revenue
+    var baseRevenue = baseCharge + tier1 + tier2 + tier3;
+
+    // additional cost riders
+    var fuelCost = usage * (season === "Summer" ? 0.045876 : 0.042859);
+    var demandSide = baseRevenue * 0.015989;
+    var nuclear = baseRevenue * 0.041562;
+    var environmental = baseRevenue * 0.162813;
+
+    // total revenue
+    var totalRevenue = baseRevenue + fuelCost + demandSide + nuclear + environmental;
+
+    // franchise fee
+    var franchiseFee = totalRevenue * (city === "Inside" ? 0.030674 : 0.011839);
+
+    // totals
+    var totalBeforeTax = totalRevenue + franchiseFee;
+    var finalTotal = totalBeforeTax * (1 + tax / 100);
+
+    // if total exceeds $500, open georgia power page
+    if (finalTotal > 500) {
+        window.open("https://www.georgiapower.com/residential/save-money-and-energy/products-programs.html");
+    }
+
+    // display results
+    var resultHTML = "<h3>Bill Summary</h3>";
+    resultHTML += "Base Charge: $" + baseCharge.toFixed(2) + "<br>";
+    resultHTML += "Tier 1: $" + tier1.toFixed(2) + "<br>";
+    resultHTML += "Tier 2: $" + tier2.toFixed(2) + "<br>";
+    resultHTML += "Tier 3: $" + tier3.toFixed(2) + "<br>";
+    resultHTML += "<strong>Base Revenue:</strong> $" + baseRevenue.toFixed(2) + "<br><br>";
+    resultHTML += "Fuel Cost Rider: $" + fuelCost.toFixed(2) + "<br>";
+    resultHTML += "Demand Side: $" + demandSide.toFixed(2) + "<br>";
+    resultHTML += "Nuclear: $" + nuclear.toFixed(2) + "<br>";
+    resultHTML += "Environmental: $" + environmental.toFixed(2) + "<br>";
+    resultHTML += "<strong>Total Revenue:</strong> $" + totalRevenue.toFixed(2) + "<br><br>";
+    resultHTML += "Franchise Fee: $" + franchiseFee.toFixed(2) + "<br>";
+    resultHTML += "<strong>Total Before Tax:</strong> $" + totalBeforeTax.toFixed(2) + "<br>";
+    resultHTML += "<strong>Final Total (After Tax):</strong> $" + finalTotal.toFixed(2);
+
+    document.getElementById("results").innerHTML = resultHTML;
+}
+-->
